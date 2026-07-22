@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>🐟 Plane Themed Scriptview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>✈️ ScriptView</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
 
@@ -16,7 +18,7 @@
         body{
             font-family:'Space Grotesk',sans-serif;
             background:
-                radial-gradient(circle at top,#16263b 0%,#0b111a 45%,#000 100%);
+                radial-gradient(circle at top,#16314b 0%,#09121d 45%,#000 100%);
             color:#fff;
             min-height:100vh;
             padding:40px;
@@ -26,46 +28,47 @@
             max-width:1300px;
             margin:auto;
             padding:35px;
-            border-radius:28px;
             background:rgba(255,255,255,.04);
             backdrop-filter:blur(16px);
             border:1px solid rgba(0,229,255,.2);
+            border-radius:28px;
             box-shadow:
-                0 0 45px rgba(0,229,255,.15),
-                inset 0 0 25px rgba(255,255,255,.02);
+                0 0 45px rgba(0,229,255,.12),
+                inset 0 0 20px rgba(255,255,255,.02);
         }
 
         h1{
             text-align:center;
             font-size:3rem;
-            margin-bottom:30px;
+            margin-bottom:10px;
             font-weight:700;
-            background:linear-gradient(90deg,#00e5ff,#00ff99,#00e5ff);
+            background:linear-gradient(90deg,#4fc3f7,#00e5ff,#7df9ff);
             background-size:200%;
             -webkit-background-clip:text;
             -webkit-text-fill-color:transparent;
             animation:gradient 6s linear infinite;
         }
 
+        .subtitle{
+            text-align:center;
+            color:#9ca3af;
+            margin-bottom:30px;
+            font-size:1rem;
+        }
+
         @keyframes gradient{
-            from{
-                background-position:0%;
-            }
-            to{
-                background-position:200%;
-            }
+            from{background-position:0%;}
+            to{background-position:200%;}
         }
 
         #preview{
             width:100%;
             height:500px;
-            background:white;
             border:none;
-            border-radius:20px;
+            border-radius:18px;
+            background:#fff;
             margin-bottom:25px;
-            box-shadow:
-                0 0 25px rgba(0,229,255,.2),
-                0 0 60px rgba(0,255,153,.08);
+            box-shadow:0 0 35px rgba(79,195,247,.18);
         }
 
         textarea{
@@ -73,62 +76,55 @@
             height:320px;
             resize:vertical;
             border:none;
-            border-radius:20px;
-            padding:22px;
+            border-radius:18px;
+            background:#111827;
+            color:#f3f4f6;
             font-family:Consolas,monospace;
             font-size:15px;
             line-height:1.6;
-            background:#111827;
-            color:#f3f4f6;
+            padding:20px;
             outline:none;
             box-shadow:
-                inset 0 0 0 2px rgba(0,229,255,.25),
-                0 0 20px rgba(0,229,255,.1);
+                inset 0 0 0 2px rgba(79,195,247,.25),
+                0 0 20px rgba(79,195,247,.1);
             transition:.25s;
         }
 
         textarea:focus{
             box-shadow:
-                inset 0 0 0 2px #00e5ff,
-                0 0 35px rgba(0,229,255,.45);
+                inset 0 0 0 2px #4fc3f7,
+                0 0 30px rgba(79,195,247,.45);
         }
 
         .toolbar{
-            margin-top:20px;
             display:flex;
             gap:15px;
             flex-wrap:wrap;
+            margin-top:20px;
         }
 
         button{
             border:none;
             padding:14px 28px;
             border-radius:14px;
-            background:linear-gradient(135deg,#00e5ff,#00ff99);
-            color:#000;
+            background:linear-gradient(135deg,#4fc3f7,#81d4fa);
+            color:#001b2e;
             font-size:16px;
             font-weight:700;
             cursor:pointer;
             transition:.25s;
-            box-shadow:0 0 20px rgba(0,229,255,.3);
+            box-shadow:0 0 20px rgba(79,195,247,.25);
         }
 
         button:hover{
             transform:translateY(-3px);
             box-shadow:
-                0 0 30px rgba(0,229,255,.6),
-                0 0 50px rgba(0,255,153,.3);
+                0 0 30px rgba(79,195,247,.55),
+                0 0 45px rgba(125,249,255,.2);
         }
 
         button:active{
             transform:scale(.97);
-        }
-
-        .footer{
-            margin-top:25px;
-            text-align:center;
-            color:#94a3b8;
-            font-size:.95rem;
         }
 
         @media(max-width:800px){
@@ -150,19 +146,19 @@
             }
 
             textarea{
-                height:250px;
+                height:240px;
             }
 
         }
 
     </style>
 </head>
-
 <body>
 
 <div class="container">
 
-    <h1>🐟 Plane Themed Scriptview</h1>
+    <h1>✈️ ScriptView</h1>
+    <div class="subtitle">Build • Preview • Create</div>
 
     <iframe id="preview"></iframe>
 
@@ -174,28 +170,24 @@ body{
     font-family:Arial,sans-serif;
     padding:30px;
 }
+
 h1{
-    color:#00bcd4;
+    color:#2196f3;
 }
 </style>
 </head>
 <body>
 
-<h1>Hello FTGames!</h1>
-
-<p>Start coding here...</p>
+<h1>Hello World!</h1>
+<p>Start coding...</p>
 
 </body>
 </html></textarea>
 
     <div class="toolbar">
-        <button onclick="runCode()">▶ Run Code</button>
-        <button onclick="copyCode()">📋 Copy Code</button>
+        <button onclick="runCode()">▶ Run</button>
+        <button onclick="copyCode()">📋 Copy</button>
         <button onclick="downloadCode()">💾 Download</button>
-    </div>
-
-    <div class="footer">
-        Plane Themed Scriptview • FTGames HTML Previewer
     </div>
 
 </div>
@@ -203,53 +195,33 @@ h1{
 <script>
 
 function runCode(){
-
     const code=document.getElementById("editor").value;
-
     const iframe=document.getElementById("preview");
-
     const doc=iframe.contentWindow.document;
-
     doc.open();
     doc.write(code);
     doc.close();
-
 }
 
 function copyCode(){
-
     navigator.clipboard.writeText(document.getElementById("editor").value);
-
-    alert("Copied!");
-
+    alert("Code copied!");
 }
 
 function downloadCode(){
-
     const code=document.getElementById("editor").value;
-
     const blob=new Blob([code],{type:"text/html"});
-
     const a=document.createElement("a");
-
     a.href=URL.createObjectURL(blob);
-
     a.download="index.html";
-
     a.click();
-
     URL.revokeObjectURL(a.href);
-
 }
 
 document.getElementById("editor").addEventListener("keydown",function(e){
-
     if(e.ctrlKey && e.key==="Enter"){
-
         runCode();
-
     }
-
 });
 
 runCode();
