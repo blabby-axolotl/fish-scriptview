@@ -1,234 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>✈️ ScriptView</title>
+<title>✈️ ScriptView</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<style>
 
-        body{
-            font-family:'Space Grotesk',sans-serif;
-            background:
-                radial-gradient(circle at top,#16314b 0%,#09121d 45%,#000 100%);
-            color:#fff;
-            min-height:100vh;
-            padding:40px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .container{
-            max-width:1300px;
-            margin:auto;
-            padding:35px;
-            background:rgba(255,255,255,.04);
-            backdrop-filter:blur(16px);
-            border:1px solid rgba(0,229,255,.2);
-            border-radius:28px;
-            box-shadow:
-                0 0 45px rgba(0,229,255,.12),
-                inset 0 0 20px rgba(255,255,255,.02);
-        }
+body{
+    font-family:'Space Grotesk',sans-serif;
+    background:
+        radial-gradient(circle at top,#16314b 0%,#09121d 45%,#000 100%);
+    color:#fff;
+    min-height:100vh;
+    padding:40px;
+}
 
-        h1{
-            text-align:center;
-            font-size:3rem;
-            margin-bottom:10px;
-            font-weight:700;
-            background:linear-gradient(90deg,#4fc3f7,#00e5ff,#7df9ff);
-            background-size:200%;
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            animation:gradient 6s linear infinite;
-        }
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:35px;
+    background:rgba(255,255,255,.04);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(79,195,247,.2);
+    border-radius:28px;
+    box-shadow:
+        0 0 45px rgba(79,195,247,.12),
+        inset 0 0 20px rgba(255,255,255,.02);
+}
 
-        .subtitle{
-            text-align:center;
-            color:#9ca3af;
-            margin-bottom:30px;
-            font-size:1rem;
-        }
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#4fc3f7,#00e5ff,#7df9ff);
+    background-size:200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 6s linear infinite;
+}
 
-        @keyframes gradient{
-            from{background-position:0%;}
-            to{background-position:200%;}
-        }
+.subtitle{
+    text-align:center;
+    color:#9ca3af;
+    margin-bottom:30px;
+}
 
-        #preview{
-            width:100%;
-            height:500px;
-            border:none;
-            border-radius:18px;
-            background:#fff;
-            margin-bottom:25px;
-            box-shadow:0 0 35px rgba(79,195,247,.18);
-        }
+@keyframes gradient{
+    from{background-position:0%;}
+    to{background-position:200%;}
+}
 
-        textarea{
-            width:100%;
-            height:320px;
-            resize:vertical;
-            border:none;
-            border-radius:18px;
-            background:#111827;
-            color:#f3f4f6;
-            font-family:Consolas,monospace;
-            font-size:15px;
-            line-height:1.6;
-            padding:20px;
-            outline:none;
-            box-shadow:
-                inset 0 0 0 2px rgba(79,195,247,.25),
-                0 0 20px rgba(79,195,247,.1);
-            transition:.25s;
-        }
 
-        textarea:focus{
-            box-shadow:
-                inset 0 0 0 2px #4fc3f7,
-                0 0 30px rgba(79,195,247,.45);
-        }
+#preview{
+    width:100%;
+    height:500px;
+    border:none;
+    border-radius:18px;
+    background:white;
+    margin-bottom:25px;
+    box-shadow:0 0 35px rgba(79,195,247,.18);
+}
 
-        .toolbar{
-            display:flex;
-            gap:15px;
-            flex-wrap:wrap;
-            margin-top:20px;
-        }
 
-        button{
-            border:none;
-            padding:14px 28px;
-            border-radius:14px;
-            background:linear-gradient(135deg,#4fc3f7,#81d4fa);
-            color:#001b2e;
-            font-size:16px;
-            font-weight:700;
-            cursor:pointer;
-            transition:.25s;
-            box-shadow:0 0 20px rgba(79,195,247,.25);
-        }
+textarea{
+    width:100%;
+    height:320px;
+    resize:vertical;
+    border:none;
+    border-radius:18px;
+    background:#111827;
+    color:#f3f4f6;
+    font-family:Consolas,monospace;
+    font-size:15px;
+    line-height:1.6;
+    padding:20px;
+    outline:none;
+    box-shadow:
+        inset 0 0 0 2px rgba(79,195,247,.25),
+        0 0 20px rgba(79,195,247,.1);
+}
 
-        button:hover{
-            transform:translateY(-3px);
-            box-shadow:
-                0 0 30px rgba(79,195,247,.55),
-                0 0 45px rgba(125,249,255,.2);
-        }
 
-        button:active{
-            transform:scale(.97);
-        }
+textarea:focus{
+    box-shadow:
+        inset 0 0 0 2px #4fc3f7,
+        0 0 30px rgba(79,195,247,.45);
+}
 
-        @media(max-width:800px){
 
-            body{
-                padding:20px;
-            }
+.toolbar{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
 
-            .container{
-                padding:20px;
-            }
 
-            h1{
-                font-size:2.2rem;
-            }
+button{
+    border:none;
+    padding:14px 28px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#4fc3f7,#81d4fa);
+    color:#001b2e;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
 
-            #preview{
-                height:350px;
-            }
 
-            textarea{
-                height:240px;
-            }
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 30px rgba(79,195,247,.55);
+}
 
-        }
 
-    </style>
+#historyPanel{
+    display:none;
+    margin-top:30px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(79,195,247,.25);
+    padding:20px;
+    border-radius:18px;
+}
+
+
+#historyPanel h2{
+    color:#4fc3f7;
+    margin-bottom:15px;
+}
+
+
+.historyItem{
+    background:#111827;
+    border:1px solid rgba(79,195,247,.2);
+    padding:15px;
+    border-radius:12px;
+    margin-top:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+
+.historyItem:hover{
+    border-color:#4fc3f7;
+    box-shadow:
+        0 0 20px rgba(79,195,247,.3);
+}
+
+
+.historyTime{
+    color:#9ca3af;
+    font-size:.85rem;
+}
+
+
+@media(max-width:800px){
+
+    body{
+        padding:20px;
+    }
+
+    .container{
+        padding:20px;
+    }
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    #preview{
+        height:350px;
+    }
+
+    textarea{
+        height:240px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
 <div class="container">
 
-    <h1>✈️ ScriptView</h1>
-    <div class="subtitle">Build • Preview • Create</div>
 
-    <iframe id="preview"></iframe>
+<h1>✈️ ScriptView</h1>
 
-    <textarea id="editor"><!DOCTYPE html>
+<div class="subtitle">
+Build • Preview • Create
+</div>
+
+
+<iframe id="preview"></iframe>
+
+
+<textarea id="editor"><!DOCTYPE html>
 <html>
+
 <head>
+
 <style>
+
 body{
-    font-family:Arial,sans-serif;
+    font-family:Arial;
     padding:30px;
 }
 
 h1{
     color:#2196f3;
 }
+
 </style>
+
 </head>
+
+
 <body>
 
 <h1>Hello World!</h1>
+
 <p>Start coding...</p>
 
-</body>
-</html></textarea>
 
-    <div class="toolbar">
-        <button onclick="runCode()">▶ Run</button>
-        <button onclick="copyCode()">📋 Copy</button>
-        <button onclick="downloadCode()">💾 Download</button>
-    </div>
+</body>
+
+</html>
+</textarea>
+
+
+<div class="toolbar">
+
+<button onclick="runCode()">▶ Run</button>
+
+<button onclick="copyCode()">📋 Copy</button>
+
+<button onclick="downloadCode()">💾 Download</button>
+
+<button onclick="openHistory()">📜 History</button>
 
 </div>
 
+
+
+<div id="historyPanel">
+
+<h2>📜 Code History</h2>
+
+<div id="historyList"></div>
+
+
+<button onclick="clearHistory()">
+🗑️ Clear History
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
 <script>
 
+
 function runCode(){
+
     const code=document.getElementById("editor").value;
+
     const iframe=document.getElementById("preview");
+
     const doc=iframe.contentWindow.document;
+
     doc.open();
+
     doc.write(code);
+
     doc.close();
+
+
+    saveHistory();
+
 }
+
+
+
+function saveHistory(){
+
+    let history=
+    JSON.parse(getCookie("scriptHistory") || "[]");
+
+
+    history.unshift({
+
+        code:
+        document.getElementById("editor").value,
+
+        time:
+        new Date().toLocaleString()
+
+    });
+
+
+    if(history.length>10){
+
+        history.pop();
+
+    }
+
+
+    setCookie(
+        "scriptHistory",
+        JSON.stringify(history),
+        365
+    );
+
+}
+
+
 
 function copyCode(){
-    navigator.clipboard.writeText(document.getElementById("editor").value);
+
+    navigator.clipboard.writeText(
+        document.getElementById("editor").value
+    );
+
     alert("Code copied!");
+
 }
+
+
 
 function downloadCode(){
-    const code=document.getElementById("editor").value;
-    const blob=new Blob([code],{type:"text/html"});
+
+    const blob=
+    new Blob(
+        [document.getElementById("editor").value],
+        {type:"text/html"}
+    );
+
+
     const a=document.createElement("a");
+
     a.href=URL.createObjectURL(blob);
+
     a.download="index.html";
+
     a.click();
-    URL.revokeObjectURL(a.href);
+
 }
 
-document.getElementById("editor").addEventListener("keydown",function(e){
-    if(e.ctrlKey && e.key==="Enter"){
-        runCode();
+
+
+function openHistory(){
+
+    let panel=
+    document.getElementById("historyPanel");
+
+
+    panel.style.display=
+    panel.style.display==="block"
+    ? "none"
+    : "block";
+
+
+    loadHistory();
+
+}
+
+
+
+function loadHistory(){
+
+    const list=
+    document.getElementById("historyList");
+
+
+    list.innerHTML="";
+
+
+    let history=
+    JSON.parse(getCookie("scriptHistory") || "[]");
+
+
+    if(history.length===0){
+
+        list.innerHTML=
+        "<p>No history yet.</p>";
+
+        return;
+
     }
+
+
+    history.forEach((item,index)=>{
+
+
+        let div=
+        document.createElement("div");
+
+
+        div.className="historyItem";
+
+
+        div.innerHTML=
+
+        `
+        <b>Version ${index+1}</b>
+
+        <div class="historyTime">
+        ${item.time}
+        </div>
+        `;
+
+
+        div.onclick=function(){
+
+            document.getElementById("editor").value=
+            item.code;
+
+            runCode();
+
+        };
+
+
+        list.appendChild(div);
+
+
+    });
+
+
+}
+
+
+
+function clearHistory(){
+
+    setCookie(
+        "scriptHistory",
+        "[]",
+        365
+    );
+
+    loadHistory();
+
+}
+
+
+
+function setCookie(name,value,days){
+
+    let date=new Date();
+
+
+    date.setTime(
+        date.getTime()
+        +
+        days*24*60*60*1000
+    );
+
+
+    document.cookie=
+    name+"="+encodeURIComponent(value)
+    +
+    ";expires="+date.toUTCString()
+    +
+    ";path=/";
+
+}
+
+
+
+function getCookie(name){
+
+    let cookies=
+    document.cookie.split(";");
+
+
+    for(let c of cookies){
+
+        c=c.trim();
+
+
+        if(c.indexOf(name+"=")==0){
+
+            return decodeURIComponent(
+                c.substring(name.length+1)
+            );
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+
+document
+.getElementById("editor")
+.addEventListener("keydown",function(e){
+
+    if(e.ctrlKey && e.key==="Enter"){
+
+        runCode();
+
+    }
+
 });
+
 
 runCode();
 
+
 </script>
 
+
 <script src="/analytics-consent.js"></script>
+
 
 </body>
 </html>
